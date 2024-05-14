@@ -5,6 +5,7 @@ use pallas_codec::utils::{Bytes, CborWrap, TagWrap};
 use pallas_network::{
     facades::NodeClient,
     miniprotocols::{
+        chainsync::{self, BlockContent},
         localstate::{
             queries_v16::{
                 self, Addr, Addrs, ChainBlockNumber, Genesis, PostAlonsoTransactionOutput,
@@ -61,7 +62,7 @@ impl PallasChainObserver {
     }
 
     /// Creates and returns a new `NodeClient`, handling any potential errors.
-    async fn get_client(&self) -> StdResult<NodeClient> {
+    pub async fn get_client(&self) -> StdResult<NodeClient> {
         self.new_client()
             .await
             .map_err(|err| anyhow!(err))
