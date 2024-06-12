@@ -4,7 +4,7 @@ use std::{fs, sync::Arc, time::Duration};
 
 use mithril_common::{
     api_version::APIVersionProvider,
-    cardano_block_scanner::CardanoBlockScanner,
+    cardano_block_scanner::CardanoImmutableBlockScanner,
     chain_observer::{CardanoCliRunner, ChainObserver, ChainObserverBuilder, ChainObserverType},
     crypto_helper::{OpCert, ProtocolPartyId, SerDeShelleyFileFormat},
     digesters::{
@@ -260,7 +260,7 @@ impl<'a> ServiceBuilder for ProductionServiceBuilder<'a> {
         let transaction_store = Arc::new(CardanoTransactionRepository::new(
             transaction_sqlite_connection,
         ));
-        let block_scanner = Arc::new(CardanoBlockScanner::new(
+        let block_scanner = Arc::new(CardanoImmutableBlockScanner::new(
             slog_scope::logger(),
             network.compute_allow_unparsable_block(self.config.allow_unparsable_block)?,
             transaction_store.clone(),
