@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["ConnectionOptions","HydrationError"],"fn":["vacuum_database"],"struct":["ConnectionBuilder","EntityCursor","Projection","ProjectionField","SourceAlias","SqliteConnectionPool","SqlitePooledConnection","Transaction","WhereCondition"],"trait":["ConnectionExtensions","GetAllCondition","Query","SqLiteEntity"],"type":["SqliteConnection"]};
